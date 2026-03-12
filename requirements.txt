@@ -1,7 +1,12 @@
+ipykernel
+# dependancies
 pandas
 numpy
 seaborn
-scikit-learn
 matplotlib
--e . # this line is equallent to 'pip install -e .' this command is used to trigger the setup.py in the python this means
+scikit-learn
+catboost
+xgboost
+
+# -e . # this line is equallent to 'pip install -e .' this command is used to trigger the setup.py in the python this means
 # this means if we run the requirements.txt file to install the dependancies it will automatically run the setup.py file to create the package 
