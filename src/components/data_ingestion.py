@@ -5,13 +5,16 @@ from src.logger import logging
 import pandas as pd
 
 from sklearn.model_selection import train_test_split
-from dataclasses import dataclass
+from dataclasses import dataclass #dataclass is a Python feature that helps create classes mainly used to store data without writing a lot of code.
 
-# from src.components.data_transformation import DataTransformation
-# from src.components.data_transformation import DataTransformationConfig
+from src.components.data_transformation import DataTransformation
+# from src.components.data_transformation import DataTransformationConfig # i think no need of this
 
 # from src.components.model_trainer import ModelTrainerConfig
 # from src.components.model_trainer import ModelTrainer
+
+
+
 @dataclass
 class DataIngestionConfig:
     train_data_path: str=os.path.join('artifacts',"train.csv")
@@ -21,6 +24,8 @@ class DataIngestionConfig:
 class DataIngestion:
     def __init__(self):
         self.ingestion_config=DataIngestionConfig()
+        # print(self.ingestion_config)          # this lines just for Debugging
+        # print(self.ingestion_config.raw_data_path)
 
     def initiate_data_ingestion(self):
         logging.info("Entered the data ingestion method or component")
@@ -39,7 +44,7 @@ class DataIngestion:
 
             test_set.to_csv(self.ingestion_config.test_data_path,index=False,header=True)
 
-            logging.info("Inmgestion of the data iss completed")
+            logging.info("Ingestion of the data iss completed")
 
             return(
                 self.ingestion_config.train_data_path,
@@ -55,8 +60,8 @@ if __name__=="__main__":
     # print(F"---{train_data}") # this both lines are for my reference
     # print(F"---{test_data}")
 
-    # data_transformation=DataTransformation()
-    # train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
+    data_transformation=DataTransformation()
+    train_arr,test_arr,_=data_transformation.initiate_data_transformation(train_data,test_data)
 
     # modeltrainer=ModelTrainer()
     # print(modeltrainer.initiate_model_trainer(train_arr,test_arr))
